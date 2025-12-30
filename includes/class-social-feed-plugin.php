@@ -54,6 +54,7 @@ class Social_Feed_Plugin {
 		require_once SOCIAL_FEED_PLUGIN_PATH . 'includes/class-social-feed-instagram-api.php';
 		require_once SOCIAL_FEED_PLUGIN_PATH . 'includes/class-social-feed-twitter-api.php';
 		require_once SOCIAL_FEED_PLUGIN_PATH . 'includes/class-social-feed-linkedin-api.php';
+		require_once SOCIAL_FEED_PLUGIN_PATH . 'includes/class-social-feed-youtube-api.php';
 		require_once SOCIAL_FEED_PLUGIN_PATH . 'admin/class-social-feed-admin.php';
 		require_once SOCIAL_FEED_PLUGIN_PATH . 'public/class-social-feed-public.php';
 

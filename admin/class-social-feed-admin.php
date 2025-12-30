@@ -251,6 +251,38 @@ class Social_Feed_Admin {
 			'social-feed-plugin',
 			'social_feed_linkedin_section'
 		);
+
+		// YouTube Settings
+		add_settings_section(
+			'social_feed_youtube_section',
+			__( 'YouTube Settings', 'social-feed-plugin' ),
+			array( $this, 'youtube_section_callback' ),
+			'social-feed-plugin'
+		);
+
+		add_settings_field(
+			'enable_youtube',
+			__( 'Enable YouTube', 'social-feed-plugin' ),
+			array( $this, 'enable_youtube_callback' ),
+			'social-feed-plugin',
+			'social_feed_youtube_section'
+		);
+
+		add_settings_field(
+			'youtube_api_key',
+			__( 'YouTube API Key', 'social-feed-plugin' ),
+			array( $this, 'youtube_api_key_callback' ),
+			'social-feed-plugin',
+			'social_feed_youtube_section'
+		);
+
+		add_settings_field(
+			'youtube_channel_id',
+			__( 'YouTube Channel ID', 'social-feed-plugin' ),
+			array( $this, 'youtube_channel_id_callback' ),
+			'social-feed-plugin',
+			'social_feed_youtube_section'
+		);
 	}
 
 	/**
@@ -285,6 +317,11 @@ class Social_Feed_Admin {
 		// LinkedIn
 		$output['enable_linkedin'] = isset( $input['enable_linkedin'] ) ? (bool) $input['enable_linkedin'] : false;
 		$output['linkedin_access_token'] = isset( $input['linkedin_access_token'] ) ? sanitize_text_field( $input['linkedin_access_token'] ) : '';
+
+		// YouTube
+		$output['enable_youtube'] = isset( $input['enable_youtube'] ) ? (bool) $input['enable_youtube'] : false;
+		$output['youtube_api_key'] = isset( $input['youtube_api_key'] ) ? sanitize_text_field( $input['youtube_api_key'] ) : '';
+		$output['youtube_channel_id'] = isset( $input['youtube_channel_id'] ) ? sanitize_text_field( $input['youtube_channel_id'] ) : '';
 
 		return $output;
 	}
@@ -397,5 +434,28 @@ class Social_Feed_Admin {
 		$options = get_option( 'social_feed_plugin_options' );
 		$value = isset( $options['linkedin_access_token'] ) ? $options['linkedin_access_token'] : '';
 		echo '<input type="text" name="social_feed_plugin_options[linkedin_access_token]" value="' . esc_attr( $value ) . '" class="regular-text" />';
+	}
+
+	public function youtube_section_callback() {
+		echo '<p>' . esc_html__( 'Configure YouTube Data API v3 settings. Get your API key from the Google Cloud Console.', 'social-feed-plugin' ) . '</p>';
+	}
+
+	public function enable_youtube_callback() {
+		$options = get_option( 'social_feed_plugin_options' );
+		$checked = isset( $options['enable_youtube'] ) && $options['enable_youtube'] ? 'checked' : '';
+		echo '<input type="checkbox" name="social_feed_plugin_options[enable_youtube]" value="1" ' . esc_attr( $checked ) . ' />';
+	}
+
+	public function youtube_api_key_callback() {
+		$options = get_option( 'social_feed_plugin_options' );
+		$value = isset( $options['youtube_api_key'] ) ? $options['youtube_api_key'] : '';
+		echo '<input type="text" name="social_feed_plugin_options[youtube_api_key]" value="' . esc_attr( $value ) . '" class="regular-text" />';
+	}
+
+	public function youtube_channel_id_callback() {
+		$options = get_option( 'social_feed_plugin_options' );
+		$value = isset( $options['youtube_channel_id'] ) ? $options['youtube_channel_id'] : '';
+		echo '<input type="text" name="social_feed_plugin_options[youtube_channel_id]" value="' . esc_attr( $value ) . '" class="regular-text" />';
+		echo '<p class="description">' . esc_html__( 'Your YouTube Channel ID (e.g., UCxxxxxxxxxxxxxx)', 'social-feed-plugin' ) . '</p>';
 	}
 }

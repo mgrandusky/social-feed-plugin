@@ -24,6 +24,7 @@ class Social_Feed_Activator {
 			'enable_instagram' => false,
 			'enable_twitter' => false,
 			'enable_linkedin' => false,
+			'enable_youtube' => false,
 		);
 		
 		add_option( 'social_feed_plugin_options', $default_options );

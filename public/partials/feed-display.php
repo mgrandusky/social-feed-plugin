@@ -43,6 +43,9 @@ if ( ! defined( 'WPINC' ) ) {
 								case 'linkedin':
 									echo '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
 									break;
+								case 'youtube':
+									echo '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>';
+									break;
 							}
 							?>
 						</span>
@@ -53,9 +56,21 @@ if ( ! defined( 'WPINC' ) ) {
 					<?php if ( ! empty( $post['image'] ) || ! empty( $post['video'] ) ) : ?>
 						<div class="social-feed-media">
 							<?php if ( ! empty( $post['video'] ) ) : ?>
-								<video controls poster="<?php echo esc_url( $post['image'] ); ?>">
-									<source src="<?php echo esc_url( $post['video'] ); ?>" type="video/mp4">
-								</video>
+								<?php if ( $post['platform'] === 'youtube' ) : ?>
+									<div class="social-feed-youtube-thumbnail" data-video-id="<?php echo esc_attr( $post['id'] ); ?>">
+										<img src="<?php echo esc_url( $post['image'] ); ?>" alt="<?php echo esc_attr( $post['text'] ); ?>" loading="lazy">
+										<div class="social-feed-play-button">
+											<svg viewBox="0 0 68 48" width="68" height="48">
+												<path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+												<path d="M 45,24 27,14 27,34" fill="#fff"></path>
+											</svg>
+										</div>
+									</div>
+								<?php else : ?>
+									<video controls poster="<?php echo esc_url( $post['image'] ); ?>">
+										<source src="<?php echo esc_url( $post['video'] ); ?>" type="video/mp4">
+									</video>
+								<?php endif; ?>
 							<?php elseif ( ! empty( $post['image'] ) ) : ?>
 								<img src="<?php echo esc_url( $post['image'] ); ?>" alt="<?php echo esc_attr( wp_trim_words( $post['text'], 10 ) ); ?>" loading="lazy">
 							<?php endif; ?>
@@ -79,4 +94,15 @@ if ( ! defined( 'WPINC' ) ) {
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
+</div>
+
+<!-- YouTube Lightbox -->
+<div id="social-feed-youtube-lightbox" class="social-feed-lightbox" style="display: none;">
+	<div class="social-feed-lightbox-overlay"></div>
+	<div class="social-feed-lightbox-content">
+		<button class="social-feed-lightbox-close" aria-label="<?php esc_attr_e( 'Close', 'social-feed-plugin' ); ?>">&times;</button>
+		<div class="social-feed-lightbox-video">
+			<iframe id="social-feed-youtube-iframe" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</div>
 </div>

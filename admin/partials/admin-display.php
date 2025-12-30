@@ -76,4 +76,13 @@ if ( ! defined( 'WPINC' ) ) {
 		<li><?php esc_html_e( 'Request access to the required API products', 'social-feed-plugin' ); ?></li>
 		<li><?php esc_html_e( 'Generate an access token with proper scopes (r_liteprofile, r_emailaddress, w_member_social)', 'social-feed-plugin' ); ?></li>
 	</ol>
+
+	<h3><?php esc_html_e( 'YouTube', 'social-feed-plugin' ); ?></h3>
+	<ol>
+		<li><?php esc_html_e( 'Go to Google Cloud Console (console.cloud.google.com)', 'social-feed-plugin' ); ?></li>
+		<li><?php esc_html_e( 'Create a new project or select an existing one', 'social-feed-plugin' ); ?></li>
+		<li><?php esc_html_e( 'Enable the YouTube Data API v3', 'social-feed-plugin' ); ?></li>
+		<li><?php esc_html_e( 'Create credentials (API Key) and restrict it to YouTube Data API v3', 'social-feed-plugin' ); ?></li>
+		<li><?php esc_html_e( 'Find your Channel ID by going to youtube.com/account_advanced', 'social-feed-plugin' ); ?></li>
+	</ol>
 </div>

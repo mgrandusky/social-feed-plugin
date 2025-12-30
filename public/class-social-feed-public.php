@@ -96,6 +96,9 @@ class Social_Feed_Public {
 			if ( ! empty( $options['enable_linkedin'] ) ) {
 				$platforms_to_fetch[] = 'linkedin';
 			}
+			if ( ! empty( $options['enable_youtube'] ) ) {
+				$platforms_to_fetch[] = 'youtube';
+			}
 		}
 
 		if ( empty( $platforms_to_fetch ) ) {
@@ -153,6 +156,9 @@ class Social_Feed_Public {
 				break;
 			case 'linkedin':
 				$api = new Social_Feed_LinkedIn_API();
+				break;
+			case 'youtube':
+				$api = new Social_Feed_YouTube_API();
 				break;
 			default:
 				return new WP_Error( 'invalid_platform', __( 'Invalid platform specified', 'social-feed-plugin' ) );
