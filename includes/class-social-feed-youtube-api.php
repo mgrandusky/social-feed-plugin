@@ -128,7 +128,8 @@ class Social_Feed_YouTube_API extends Social_Feed_API_Base {
 			$snippet = $item['snippet'];
 			$video_id = isset( $snippet['resourceId']['videoId'] ) ? sanitize_text_field( $snippet['resourceId']['videoId'] ) : '';
 			
-			if ( empty( $video_id ) ) {
+			// Validate YouTube video ID format (11 characters: alphanumeric, hyphens, underscores)
+			if ( empty( $video_id ) || ! preg_match( '/^[a-zA-Z0-9_-]{11}$/', $video_id ) ) {
 				continue;
 			}
 

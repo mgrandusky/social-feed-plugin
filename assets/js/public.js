@@ -23,11 +23,12 @@
 		// Open lightbox when YouTube thumbnail is clicked
 		$(document).on('click', '.social-feed-youtube-thumbnail', function(e) {
 			e.preventDefault();
-			var videoId = $(this).data('video-id');
+			var videoId = $(this).data('youtube-video-id');
 			
-			if (videoId) {
+			// Validate YouTube video ID format (11 characters: alphanumeric, hyphens, underscores)
+			if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
 				// Build YouTube embed URL with autoplay
-				var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+				var embedUrl = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0';
 				$iframe.attr('src', embedUrl);
 				$lightbox.fadeIn(300);
 				

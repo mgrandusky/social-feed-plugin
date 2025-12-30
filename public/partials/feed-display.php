@@ -57,7 +57,7 @@ if ( ! defined( 'WPINC' ) ) {
 						<div class="social-feed-media">
 							<?php if ( ! empty( $post['video'] ) ) : ?>
 								<?php if ( $post['platform'] === 'youtube' ) : ?>
-									<div class="social-feed-youtube-thumbnail" data-video-id="<?php echo esc_attr( $post['id'] ); ?>">
+									<div class="social-feed-youtube-thumbnail" data-youtube-video-id="<?php echo esc_attr( $post['id'] ); ?>">
 										<img src="<?php echo esc_url( $post['image'] ); ?>" alt="<?php echo esc_attr( $post['text'] ); ?>" loading="lazy">
 										<div class="social-feed-play-button">
 											<svg viewBox="0 0 68 48" width="68" height="48">
