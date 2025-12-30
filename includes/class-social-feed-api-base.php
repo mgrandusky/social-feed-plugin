@@ -73,18 +73,47 @@ abstract class Social_Feed_API_Base {
 		}
 
 		$status_code = wp_remote_retrieve_response_code( $response );
+		$body = wp_remote_retrieve_body( $response );
+		
 		if ( $status_code !== 200 ) {
-			return new WP_Error(
-				'api_error',
-				sprintf(
-					/* translators: %d: HTTP status code */
-					__( 'API returned error code: %d', 'social-feed-plugin' ),
-					$status_code
-				)
+			// Try to get error details from response body
+			$error_message = sprintf(
+				/* translators: %d: HTTP status code */
+				__( 'API returned error code: %d', 'social-feed-plugin' ),
+				$status_code
 			);
+			
+			// Attempt to parse error details from JSON response
+			$error_data = json_decode( $body, true );
+			if ( json_last_error() === JSON_ERROR_NONE && isset( $error_data['errors'] ) ) {
+				if ( is_array( $error_data['errors'] ) && ! empty( $error_data['errors'] ) ) {
+					$error_details = array();
+					foreach ( $error_data['errors'] as $error ) {
+						if ( isset( $error['message'] ) ) {
+							$error_details[] = $error['message'];
+						} elseif ( is_string( $error ) ) {
+							$error_details[] = $error;
+						}
+					}
+					if ( ! empty( $error_details ) ) {
+						$error_message .= ': ' . implode( ', ', $error_details );
+					}
+				}
+			} elseif ( json_last_error() === JSON_ERROR_NONE && isset( $error_data['error'] ) ) {
+				// Handle single error object
+				if ( is_array( $error_data['error'] ) && isset( $error_data['error']['message'] ) ) {
+					$error_message .= ': ' . $error_data['error']['message'];
+				} elseif ( is_string( $error_data['error'] ) ) {
+					$error_message .= ': ' . $error_data['error'];
+				}
+			} elseif ( json_last_error() === JSON_ERROR_NONE && isset( $error_data['message'] ) ) {
+				// Handle message field directly
+				$error_message .= ': ' . $error_data['message'];
+			}
+			
+			return new WP_Error( 'api_error', $error_message );
 		}
 
-		$body = wp_remote_retrieve_body( $response );
 		$data = json_decode( $body, true );
 
 		if ( json_last_error() !== JSON_ERROR_NONE ) {

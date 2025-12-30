@@ -67,7 +67,14 @@ if ( ! defined( 'WPINC' ) ) {
 		<li><?php esc_html_e( 'Create a new project and app', 'social-feed-plugin' ); ?></li>
 		<li><?php esc_html_e( 'Generate a Bearer Token with read permissions', 'social-feed-plugin' ); ?></li>
 		<li><?php esc_html_e( 'Enter your Twitter username (without @)', 'social-feed-plugin' ); ?></li>
+		<li><strong><?php esc_html_e( 'Important:', 'social-feed-plugin' ); ?></strong> <?php esc_html_e( 'Make sure your app has access to Twitter API v2 and the bearer token has not expired', 'social-feed-plugin' ); ?></li>
 	</ol>
+	<p><em><?php esc_html_e( 'If you receive a 401 error, verify that:', 'social-feed-plugin' ); ?></em></p>
+	<ul>
+		<li><?php esc_html_e( 'Your bearer token is correct and has not expired', 'social-feed-plugin' ); ?></li>
+		<li><?php esc_html_e( 'Your Twitter app has the necessary permissions (tweet.read, users.read)', 'social-feed-plugin' ); ?></li>
+		<li><?php esc_html_e( 'Your app has been approved for Essential, Elevated, or higher access level', 'social-feed-plugin' ); ?></li>
+	</ul>
 
 	<h3><?php esc_html_e( 'LinkedIn', 'social-feed-plugin' ); ?></h3>
 	<ol>

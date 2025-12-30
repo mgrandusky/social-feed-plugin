@@ -60,7 +60,9 @@ class Social_Feed_Twitter_API extends Social_Feed_API_Base {
 		$user_data = $this->make_request( $user_url, array(
 			'headers' => array(
 				'Authorization' => 'Bearer ' . $this->credentials['bearer_token'],
+				'User-Agent' => 'Social-Feed-Plugin/1.0',
 			),
+			'timeout' => 15,
 		) );
 
 		if ( is_wp_error( $user_data ) ) {
@@ -87,7 +89,9 @@ class Social_Feed_Twitter_API extends Social_Feed_API_Base {
 		$data = $this->make_request( $url, array(
 			'headers' => array(
 				'Authorization' => 'Bearer ' . $this->credentials['bearer_token'],
+				'User-Agent' => 'Social-Feed-Plugin/1.0',
 			),
+			'timeout' => 15,
 		) );
 
 		if ( is_wp_error( $data ) ) {
