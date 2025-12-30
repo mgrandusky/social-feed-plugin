@@ -9,6 +9,13 @@
 class Social_Feed_Facebook_API extends Social_Feed_API_Base {
 
 	/**
+	 * Facebook Graph API version.
+	 *
+	 * @var string
+	 */
+	const API_VERSION = 'v18.0';
+
+	/**
 	 * Initialize the class.
 	 */
 	public function __construct() {
@@ -70,7 +77,7 @@ class Social_Feed_Facebook_API extends Social_Feed_API_Base {
 				'access_token' => $access_token,
 				'limit' => 25,
 			),
-			'https://graph.facebook.com/v18.0/' . $page_id . '/posts'
+			'https://graph.facebook.com/' . self::API_VERSION . '/' . $page_id . '/posts'
 		);
 
 		$data = $this->make_request( $url );

@@ -19,11 +19,18 @@ $cache_dir = $upload_dir['basedir'] . '/social-feed-cache';
 
 if ( file_exists( $cache_dir ) ) {
 	// Delete all cache files
-	$files = glob( $cache_dir . '/*' );
-	foreach ( $files as $file ) {
-		if ( is_file( $file ) ) {
-			unlink( $file );
+	$files = glob( $cache_dir . '/*.cache' );
+	if ( is_array( $files ) ) {
+		foreach ( $files as $file ) {
+			if ( is_file( $file ) ) {
+				unlink( $file );
+			}
 		}
+	}
+	// Remove .htaccess if exists
+	$htaccess = $cache_dir . '/.htaccess';
+	if ( file_exists( $htaccess ) ) {
+		unlink( $htaccess );
 	}
 	// Remove the directory
 	rmdir( $cache_dir );

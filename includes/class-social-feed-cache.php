@@ -101,9 +101,11 @@ class Social_Feed_Cache {
 		}
 
 		$files = glob( $this->cache_dir . '/*.cache' );
-		foreach ( $files as $file ) {
-			if ( is_file( $file ) ) {
-				unlink( $file );
+		if ( is_array( $files ) ) {
+			foreach ( $files as $file ) {
+				if ( is_file( $file ) ) {
+					unlink( $file );
+				}
 			}
 		}
 		
