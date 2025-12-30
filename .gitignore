@@ -1,0 +1,28 @@
+# WordPress
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Node modules (if ever needed for build tools)
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Cache
+.cache/

@@ -1,0 +1,236 @@
+# Copyright (C) 2024 Social Feed Plugin Team
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Social Feed Plugin 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/mgrandusky/social-feed-plugin/issues\n"
+"POT-Creation-Date: 2024-12-30 16:00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/class-social-feed-admin.php
+msgid "Social Feed Plugin Settings"
+msgstr ""
+
+msgid "Social Feeds"
+msgstr ""
+
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+msgid "Cache cleared successfully!"
+msgstr ""
+
+msgid "General Settings"
+msgstr ""
+
+msgid "Configure general plugin settings."
+msgstr ""
+
+msgid "Cache Duration (seconds)"
+msgstr ""
+
+msgid "How long to cache API responses (in seconds). Default: 3600 (1 hour)"
+msgstr ""
+
+msgid "Posts Per Page"
+msgstr ""
+
+msgid "Number of posts to display. Default: 10"
+msgstr ""
+
+msgid "Facebook Settings"
+msgstr ""
+
+msgid "Configure Facebook API settings. Get your credentials from the Facebook Developer Console."
+msgstr ""
+
+msgid "Enable Facebook"
+msgstr ""
+
+msgid "Facebook App ID"
+msgstr ""
+
+msgid "Facebook App Secret"
+msgstr ""
+
+msgid "Facebook Access Token (Optional)"
+msgstr ""
+
+msgid "Optional. If not provided, App ID and Secret will be used."
+msgstr ""
+
+msgid "Facebook Page ID"
+msgstr ""
+
+msgid "Instagram Settings"
+msgstr ""
+
+msgid "Configure Instagram API settings. Use Instagram Basic Display API or Instagram Graph API."
+msgstr ""
+
+msgid "Enable Instagram"
+msgstr ""
+
+msgid "Instagram Access Token"
+msgstr ""
+
+msgid "Twitter Settings"
+msgstr ""
+
+msgid "Configure Twitter API v2 settings. Get your bearer token from the Twitter Developer Portal."
+msgstr ""
+
+msgid "Enable Twitter"
+msgstr ""
+
+msgid "Twitter Bearer Token"
+msgstr ""
+
+msgid "Twitter Username"
+msgstr ""
+
+msgid "Twitter username without @"
+msgstr ""
+
+msgid "LinkedIn Settings"
+msgstr ""
+
+msgid "Configure LinkedIn API settings. Get your access token from the LinkedIn Developer Platform."
+msgstr ""
+
+msgid "Enable LinkedIn"
+msgstr ""
+
+msgid "LinkedIn Access Token"
+msgstr ""
+
+#: admin/partials/admin-display.php
+msgid "Usage:"
+msgstr ""
+
+msgid "Add the shortcode"
+msgstr ""
+
+msgid "to any post or page to display your social media feeds."
+msgstr ""
+
+msgid "Cache Management"
+msgstr ""
+
+msgid "Clear the cache to force refresh of all social media feeds."
+msgstr ""
+
+msgid "Clear Cache"
+msgstr ""
+
+msgid "API Setup Instructions"
+msgstr ""
+
+msgid "Go to Facebook Developers (developers.facebook.com)"
+msgstr ""
+
+msgid "Create a new app and get your App ID and App Secret"
+msgstr ""
+
+msgid "Add the Facebook Page ID you want to display"
+msgstr ""
+
+msgid "Optionally generate a Page Access Token for better functionality"
+msgstr ""
+
+msgid "Use Instagram Basic Display API or Instagram Graph API"
+msgstr ""
+
+msgid "Create an app at developers.facebook.com"
+msgstr ""
+
+msgid "Generate a long-lived access token"
+msgstr ""
+
+msgid "Enter the access token in the field above"
+msgstr ""
+
+msgid "Go to Twitter Developer Portal (developer.twitter.com)"
+msgstr ""
+
+msgid "Create a new project and app"
+msgstr ""
+
+msgid "Generate a Bearer Token with read permissions"
+msgstr ""
+
+msgid "Enter your Twitter username (without @)"
+msgstr ""
+
+msgid "Go to LinkedIn Developer Platform (developer.linkedin.com)"
+msgstr ""
+
+msgid "Create a new app"
+msgstr ""
+
+msgid "Request access to the required API products"
+msgstr ""
+
+msgid "Generate an access token with proper scopes (r_liteprofile, r_emailaddress, w_member_social)"
+msgstr ""
+
+#: includes/class-social-feed-api-base.php
+msgid "API request failed: %s"
+msgstr ""
+
+msgid "API returned error code: %d"
+msgstr ""
+
+msgid "Failed to parse API response"
+msgstr ""
+
+#: includes/class-social-feed-facebook-api.php
+msgid "Facebook API is not configured"
+msgstr ""
+
+msgid "Facebook Page ID is required"
+msgstr ""
+
+#: includes/class-social-feed-instagram-api.php
+msgid "Instagram API is not configured"
+msgstr ""
+
+#: includes/class-social-feed-twitter-api.php
+msgid "Twitter API is not configured"
+msgstr ""
+
+msgid "Twitter username is required"
+msgstr ""
+
+msgid "Twitter user not found"
+msgstr ""
+
+#: includes/class-social-feed-linkedin-api.php
+msgid "LinkedIn API is not configured"
+msgstr ""
+
+msgid "Failed to retrieve LinkedIn profile"
+msgstr ""
+
+#: public/class-social-feed-public.php
+msgid "No social media platforms are enabled. Please configure the plugin settings."
+msgstr ""
+
+msgid "Invalid platform specified"
+msgstr ""
+
+#: public/partials/feed-display.php
+msgid "No posts available at this time."
+msgstr ""
+
+msgid "ago"
+msgstr ""
+
+msgid "View on"
+msgstr ""

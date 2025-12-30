@@ -1,0 +1,108 @@
+<?php
+/**
+ * Template for displaying social feeds
+ *
+ * @package    Social_Feed_Plugin
+ * @subpackage Social_Feed_Plugin/public/partials
+ */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+?>
+
+<div class="social-feed-container">
+	<?php if ( ! empty( $errors ) ) : ?>
+		<div class="social-feed-errors">
+			<?php foreach ( $errors as $error ) : ?>
+				<p class="social-feed-error"><?php echo esc_html( $error ); ?></p>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+
+	<?php if ( empty( $all_posts ) ) : ?>
+		<p class="social-feed-empty"><?php esc_html_e( 'No posts available at this time.', 'social-feed-plugin' ); ?></p>
+	<?php else : ?>
+		<div class="social-feed-grid">
+			<?php foreach ( $all_posts as $post ) : ?>
+				<div class="social-feed-item social-feed-<?php echo esc_attr( $post['platform'] ); ?>">
+					<div class="social-feed-header">
+						<span class="social-feed-platform-icon">
+							<?php
+							switch ( $post['platform'] ) {
+								case 'facebook':
+									echo '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>';
+									break;
+								case 'instagram':
+									echo '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>';
+									break;
+								case 'twitter':
+									echo '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>';
+									break;
+								case 'linkedin':
+									echo '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
+									break;
+								case 'youtube':
+									echo '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>';
+									break;
+							}
+							?>
+						</span>
+						<span class="social-feed-platform-name"><?php echo esc_html( ucfirst( $post['platform'] ) ); ?></span>
+						<span class="social-feed-date"><?php echo esc_html( human_time_diff( $post['created_time'], current_time( 'timestamp' ) ) ); ?> <?php esc_html_e( 'ago', 'social-feed-plugin' ); ?></span>
+					</div>
+
+					<?php if ( ! empty( $post['image'] ) || ! empty( $post['video'] ) ) : ?>
+						<div class="social-feed-media">
+							<?php if ( ! empty( $post['video'] ) ) : ?>
+								<?php if ( $post['platform'] === 'youtube' ) : ?>
+									<div class="social-feed-youtube-thumbnail" data-youtube-video-id="<?php echo esc_attr( $post['id'] ); ?>">
+										<img src="<?php echo esc_url( $post['image'] ); ?>" alt="<?php echo esc_attr( $post['text'] ); ?>" loading="lazy">
+										<div class="social-feed-play-button">
+											<svg viewBox="0 0 68 48" width="68" height="48">
+												<path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+												<path d="M 45,24 27,14 27,34" fill="#fff"></path>
+											</svg>
+										</div>
+									</div>
+								<?php else : ?>
+									<video controls poster="<?php echo esc_url( $post['image'] ); ?>">
+										<source src="<?php echo esc_url( $post['video'] ); ?>" type="video/mp4">
+									</video>
+								<?php endif; ?>
+							<?php elseif ( ! empty( $post['image'] ) ) : ?>
+								<img src="<?php echo esc_url( $post['image'] ); ?>" alt="<?php echo esc_attr( wp_trim_words( $post['text'], 10 ) ); ?>" loading="lazy">
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $post['text'] ) ) : ?>
+						<div class="social-feed-content">
+							<p><?php echo wp_kses_post( nl2br( $post['text'] ) ); ?></p>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $post['link'] ) ) : ?>
+						<div class="social-feed-footer">
+							<a href="<?php echo esc_url( $post['link'] ); ?>" target="_blank" rel="noopener noreferrer" class="social-feed-link">
+								<?php esc_html_e( 'View on', 'social-feed-plugin' ); ?> <?php echo esc_html( ucfirst( $post['platform'] ) ); ?>
+							</a>
+						</div>
+					<?php endif; ?>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+</div>
+
+<!-- YouTube Lightbox -->
+<div id="social-feed-youtube-lightbox" class="social-feed-lightbox" style="display: none;">
+	<div class="social-feed-lightbox-overlay"></div>
+	<div class="social-feed-lightbox-content">
+		<button class="social-feed-lightbox-close" aria-label="<?php esc_attr_e( 'Close', 'social-feed-plugin' ); ?>">&times;</button>
+		<div class="social-feed-lightbox-video">
+			<iframe id="social-feed-youtube-iframe" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</div>
+</div>
