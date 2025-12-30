@@ -1,0 +1,37 @@
+/**
+ * Admin styles for Social Feed Plugin
+ */
+
+.social-feed-plugin-admin {
+	max-width: 900px;
+}
+
+.social-feed-plugin-admin h2 {
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.social-feed-plugin-admin .form-table th {
+	width: 250px;
+}
+
+.social-feed-plugin-admin .form-table input[type="text"],
+.social-feed-plugin-admin .form-table input[type="password"] {
+	width: 100%;
+	max-width: 500px;
+}
+
+.social-feed-plugin-admin .description {
+	display: block;
+	margin-top: 5px;
+	color: #666;
+	font-style: italic;
+}
+
+.social-feed-plugin-admin ol {
+	margin-left: 20px;
+}
+
+.social-feed-plugin-admin ol li {
+	margin-bottom: 10px;
+}

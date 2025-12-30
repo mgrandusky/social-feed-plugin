@@ -1,0 +1,163 @@
+/**
+ * Public styles for Social Feed Plugin
+ */
+
+.social-feed-container {
+	margin: 20px 0;
+}
+
+.social-feed-errors {
+	background-color: #fff3cd;
+	border: 1px solid #ffc107;
+	border-radius: 4px;
+	padding: 15px;
+	margin-bottom: 20px;
+}
+
+.social-feed-error {
+	color: #856404;
+	margin: 5px 0;
+}
+
+.social-feed-empty {
+	text-align: center;
+	padding: 40px 20px;
+	color: #666;
+	font-size: 16px;
+}
+
+.social-feed-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+	margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+	.social-feed-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.social-feed-item {
+	background: #fff;
+	border: 1px solid #e1e8ed;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: box-shadow 0.3s ease;
+}
+
+.social-feed-item:hover {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.social-feed-header {
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	border-bottom: 1px solid #e1e8ed;
+	background: #f8f9fa;
+}
+
+.social-feed-platform-icon {
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+}
+
+.social-feed-platform-icon svg {
+	width: 24px;
+	height: 24px;
+}
+
+.social-feed-facebook .social-feed-platform-icon {
+	color: #1877f2;
+}
+
+.social-feed-instagram .social-feed-platform-icon {
+	color: #e4405f;
+}
+
+.social-feed-twitter .social-feed-platform-icon {
+	color: #1da1f2;
+}
+
+.social-feed-linkedin .social-feed-platform-icon {
+	color: #0077b5;
+}
+
+.social-feed-platform-name {
+	font-weight: 600;
+	margin-right: auto;
+	color: #333;
+}
+
+.social-feed-date {
+	color: #657786;
+	font-size: 13px;
+}
+
+.social-feed-media {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.social-feed-media img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.social-feed-media video {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.social-feed-content {
+	padding: 15px;
+}
+
+.social-feed-content p {
+	margin: 0;
+	line-height: 1.6;
+	color: #333;
+	word-wrap: break-word;
+}
+
+.social-feed-footer {
+	padding: 10px 15px;
+	border-top: 1px solid #e1e8ed;
+	background: #f8f9fa;
+}
+
+.social-feed-link {
+	color: #007bff;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	transition: color 0.2s ease;
+}
+
+.social-feed-link:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
+/* Platform-specific styling */
+.social-feed-facebook {
+	border-left: 3px solid #1877f2;
+}
+
+.social-feed-instagram {
+	border-left: 3px solid #e4405f;
+}
+
+.social-feed-twitter {
+	border-left: 3px solid #1da1f2;
+}
+
+.social-feed-linkedin {
+	border-left: 3px solid #0077b5;
+}
